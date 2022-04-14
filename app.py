@@ -11,138 +11,138 @@ app = Flask(__name__)
 
 def create_flex_template(img_url, display_name, place, work_time, contact, website):
     line_template = {
-    "type": "bubble",
-    "hero": {
-        "type": "image",
-        "url": img_url,
-        "size": "full",
-        "aspectRatio": "20:13",
-        "aspectMode": "cover",
-        "action": {
-            "type": "postback",
-            "label": "action",
-            "data": "contact"
+        "type": "bubble",
+        "hero": {
+            "type": "image",
+            "url": img_url,
+            "size": "full",
+            "aspectRatio": "20:13",
+            "aspectMode": "cover",
+            "action": {
+                "type": "postback",
+                "label": "action",
+                "data": "contact"
+            }
+        },
+        "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": display_name,
+                    "weight": "bold",
+                    "size": "xl"
+                },
+                {
+                    "type": "box",
+                    "layout": "vertical",
+                    "margin": "lg",
+                    "spacing": "sm",
+                    "contents": [
+                        {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "Place",
+                                    "color": "#aaaaaa",
+                                    "size": "sm",
+                                    "flex": 1
+                                },
+                                {
+                                    "type": "text",
+                                    "text": place,
+                                    "wrap": True,
+                                    "color": "#666666",
+                                    "size": "sm",
+                                    "flex": 5
+                                }
+                            ]
+                        },
+                        {
+                            "type": "box",
+                            "layout": "baseline",
+                            "spacing": "sm",
+                            "contents": [
+                                {
+                                    "type": "text",
+                                    "text": "Time",
+                                    "color": "#aaaaaa",
+                                    "size": "sm",
+                                    "flex": 1
+                                },
+                                {
+                                    "type": "text",
+                                    "text": work_time,
+                                    "wrap": True,
+                                    "color": "#666666",
+                                    "size": "sm",
+                                    "flex": 5
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "footer": {
+            "type": "box",
+            "layout": "vertical",
+            "spacing": "sm",
+            "contents": [
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "style": "link",
+                            "height": "sm",
+                            "action": {
+                                "type": "postback",
+                                "label": "CONTACT",
+                                "data": contact
+                            }
+                        }
+                    ],
+                    "margin": "sm"
+                },
+                {
+                    "type": "box",
+                    "layout": "horizontal",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "style": "link",
+                            "height": "sm",
+                            "action": {
+                                "type": "uri",
+                                "label": "WEBSITE",
+                                "uri": website
+                            }
+                        }
+                    ]
+                }
+            ],
+            "flex": 0
         }
-    },
-    "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-            {
-                "type": "text",
-                "text": display_name,
-                "weight": "bold",
-                "size": "xl"
-            },
-            {
-                "type": "box",
-                "layout": "vertical",
-                "margin": "lg",
-                "spacing": "sm",
-                "contents": [
-                    {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "Place",
-                                "color": "#aaaaaa",
-                                "size": "sm",
-                                "flex": 1
-                            },
-                            {
-                                "type": "text",
-                                "text": place,
-                                "wrap": True,
-                                "color": "#666666",
-                                "size": "sm",
-                                "flex": 5
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "Time",
-                                "color": "#aaaaaa",
-                                "size": "sm",
-                                "flex": 1
-                            },
-                            {
-                                "type": "text",
-                                "text": work_time,
-                                "wrap": True,
-                                "color": "#666666",
-                                "size": "sm",
-                                "flex": 5
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    "footer": {
-        "type": "box",
-        "layout": "vertical",
-        "spacing": "sm",
-        "contents": [
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "button",
-                        "style": "link",
-                        "height": "sm",
-                        "action": {
-                            "type": "postback",
-                            "label": "CONTACT",
-                            "data": contact
-                        }
-                    }
-                ],
-                "margin": "sm"
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "button",
-                        "style": "link",
-                        "height": "sm",
-                        "action": {
-                            "type": "uri",
-                            "label": "WEBSITE",
-                            "uri": website
-                        }
-                    }
-                ]
-            }
-        ],
-        "flex": 0
-    }
     }
     return line_template
 
 
 def createFlex(bubble_json):
     lineresult = {
-        "type": "bubble",
-        "altText": "This is a Flex Message.",
+        "type": "flex",
+        "altText": "This is a flex message",
         "contents": [bubble_json]
     }
 
     payload = {
-        "line_payload": [lineresult],
-        "response_type": "object"
+        "response_type": "object",
+        "line_payload": [lineresult]
     }
 
     return payload
